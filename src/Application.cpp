@@ -30,6 +30,8 @@ void Application::init()
             isRunning = false;
         }
     }
+
+    populateGrid();
 }
 
 void Application::run()
@@ -75,6 +77,17 @@ void Application::clean()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+void Application::populateGrid()
+{
+    for (int i = 0; i < gridWidth; i++)
+    {
+        for (int j = 0; j < gridHeight; j++)
+        {
+            grid[i][j] = rand() % 2;
+        }
+    }
 }
 
 void Application::drawGrid()

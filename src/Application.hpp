@@ -16,6 +16,7 @@ public:
     void clean();
 
 private:
+    void populateGrid();
     void drawGrid();
 
 private:

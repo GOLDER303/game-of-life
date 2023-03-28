@@ -18,6 +18,8 @@ public:
 private:
     void populateGrid();
     void drawGrid();
+    void updateGrid();
+    int countNeighbors(int x, int y);
 
 private:
     int gridCellSize = 10;

@@ -40,6 +40,7 @@ void Application::run()
     {
         handleEvents();
         render();
+        updateGrid();
     }
 }
 
@@ -119,4 +120,47 @@ void Application::drawGrid()
             }
         }
     }
+}
+
+void Application::updateGrid()
+{
+    std::vector<std::vector<int>> updatedGrid(gridWidth, std::vector<int>(gridHeight, 0));
+
+    for (int i = 0; i < gridWidth; i++)
+    {
+        for (int j = 0; j < gridHeight; j++)
+        {
+            int neighbors = countNeighbors(i, j);
+
+            if (neighbors < 2)
+            {
+                updatedGrid[i][j] = 0;
+            }
+            else if (neighbors > 3)
+            {
+                updatedGrid[i][j] = 0;
+            }
+            else if (neighbors == 3 || (neighbors == 2 && grid[i][j]))
+            {
+                updatedGrid[i][j] = 1;
+            }
+        }
+    }
+
+    grid = updatedGrid;
+}
+
+int Application::countNeighbors(int x, int y)
+{
+    int neighbors = 0;
+
+    for (int i = std::max(0, x - 1); i <= std::min(x + 1, gridWidth - 1); i++)
+    {
+        for (int j = std::max(0, y - 1); j <= std::min(y + 1, gridHeight - 1); j++)
+        {
+            neighbors += grid[i][j];
+        }
+    }
+
+    return neighbors - grid[x][y];
 }

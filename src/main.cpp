@@ -5,6 +5,8 @@
 
 int main(int argv, char **args)
 {
+    srand(time(nullptr));
+
     Application application;
 
     application.init();

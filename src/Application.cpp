@@ -16,7 +16,7 @@ void Application::init()
     }
     else
     {
-        window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+        window = SDL_CreateWindow("Game of Life", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
         if (window == nullptr)
         {
             printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
